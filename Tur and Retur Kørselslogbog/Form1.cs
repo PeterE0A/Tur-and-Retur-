@@ -19,7 +19,8 @@ namespace Tur_and_Retur_Kørselslogbog
             InitializeComponent();
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+        //SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+        //SqlCommand cmd = new SqlCommand("insert into tblUser(username) values(('" + txtUsername.Text + "')", con);
         //SqlConnection cmd = new SqlConnection();
         //SqlConnection da = new SqlConnection();
 
@@ -30,22 +31,34 @@ namespace Tur_and_Retur_Kørselslogbog
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+            //SqlCommand cmd = new SqlCommand(/*"INSERT INTO tblUser (username) VALUES ('" + txtUsername.Text + "')", con*/);
 
-                if (txtUsername.Text == "" && txtpassword.Text == "" && txtComPassword.Text == "")
-                {
-                    MessageBox.Show("Username and Password fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (txtpassword.Text == txtComPassword.Text)
-                {
-                conn.Open();
+
+
+
+
+            if (txtUsername.Text == "" && txtpassword.Text == "" && txtComPassword.Text == "")
+            {
+                MessageBox.Show("Username and Password fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (txtpassword.Text == txtComPassword.Text)
+            {
+                con.Open();
                 string register = "INSERT INTO tblUser (username, password) VALUES ('" + txtUsername.Text + "', '" + txtpassword.Text + "')";
-                SqlConnection cmd = new SqlConnection(register);
-                conn.Close();
+               SqlCommand cmd = new SqlCommand(register, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
 
+                MessageBox.Show("Your Account has been Successfully Created", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                /*continue from Here*/
+                MessageBox.Show("Passwords does not match, Please ");
             }
 
-          
+
 
         }
     }
