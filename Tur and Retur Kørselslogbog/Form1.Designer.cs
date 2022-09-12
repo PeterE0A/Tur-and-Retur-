@@ -91,6 +91,7 @@
             this.txtpassword.Location = new System.Drawing.Point(33, 215);
             this.txtpassword.Multiline = true;
             this.txtpassword.Name = "txtpassword";
+            this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(216, 28);
             this.txtpassword.TabIndex = 2;
             // 
@@ -111,6 +112,7 @@
             this.txtComPassword.Location = new System.Drawing.Point(33, 283);
             this.txtComPassword.Multiline = true;
             this.txtComPassword.Name = "txtComPassword";
+            this.txtComPassword.PasswordChar = '*';
             this.txtComPassword.Size = new System.Drawing.Size(216, 28);
             this.txtComPassword.TabIndex = 2;
             // 
@@ -125,6 +127,7 @@
             this.checkbxShowPas.TabIndex = 3;
             this.checkbxShowPas.Text = "Show Password";
             this.checkbxShowPas.UseVisualStyleBackColor = true;
+            this.checkbxShowPas.CheckedChanged += new System.EventHandler(this.checkbxShowPas_CheckedChanged);
             // 
             // button1
             // 
@@ -153,6 +156,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "CLEAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -173,6 +177,7 @@
             this.label6.Size = new System.Drawing.Size(97, 17);
             this.label6.TabIndex = 6;
             this.label6.Text = "Back to LOGIN";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // frmRegister
             // 

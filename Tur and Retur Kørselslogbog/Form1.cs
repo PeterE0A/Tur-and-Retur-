@@ -50,16 +50,51 @@ namespace Tur_and_Retur_Kørselslogbog
                 cmd.ExecuteNonQuery();
                 con.Close();
 
+                txtUsername.Text = "";
+                txtpassword.Text = "";
+                txtComPassword.Text = "";
+
                 MessageBox.Show("Your Account has been Successfully Created", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                /*continue from Here*/
-                MessageBox.Show("Passwords does not match, Please ");
+                MessageBox.Show("Passwords does not match, Please Re-enter", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtpassword.Text = "";
+                txtComPassword.Text = "";
+                txtpassword.Focus();
             }
 
 
 
+        }
+
+        private void checkbxShowPas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkbxShowPas.Checked)
+            {
+                txtpassword.PasswordChar = '\0';
+               txtComPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtpassword.PasswordChar = '*';
+                txtComPassword.PasswordChar = '*';
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtUsername.Text = "";
+            txtpassword.Text = "";
+            txtComPassword.Text = "";
+            txtUsername.Focus();
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
         }
     }
 }
