@@ -44,11 +44,11 @@
             this.Delete = new System.Windows.Forms.Button();
             this.Search = new System.Windows.Forms.Button();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
-            this.NumberPlate = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.user_id = new System.Windows.Forms.ComboBox();
             this.UserID = new System.Windows.Forms.Label();
             this.FirstName = new System.Windows.Forms.TextBox();
+            this.NumberPlate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,6 +225,7 @@
             this.Delete.TabIndex = 15;
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = false;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Search
             // 
@@ -255,18 +256,6 @@
             this.dateTime.Name = "dateTime";
             this.dateTime.Size = new System.Drawing.Size(216, 28);
             this.dateTime.TabIndex = 17;
-            // 
-            // NumberPlate
-            // 
-            this.NumberPlate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.NumberPlate.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.NumberPlate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NumberPlate.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumberPlate.FormattingEnabled = true;
-            this.NumberPlate.Location = new System.Drawing.Point(30, 490);
-            this.NumberPlate.Name = "NumberPlate";
-            this.NumberPlate.Size = new System.Drawing.Size(216, 29);
-            this.NumberPlate.TabIndex = 18;
             // 
             // dataGridView1
             // 
@@ -316,17 +305,28 @@
             this.FirstName.TabIndex = 22;
             this.FirstName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // NumberPlate
+            // 
+            this.NumberPlate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.NumberPlate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NumberPlate.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberPlate.Location = new System.Drawing.Point(30, 490);
+            this.NumberPlate.Multiline = true;
+            this.NumberPlate.Name = "NumberPlate";
+            this.NumberPlate.Size = new System.Drawing.Size(216, 28);
+            this.NumberPlate.TabIndex = 23;
+            // 
             // personale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 658);
+            this.Controls.Add(this.NumberPlate);
             this.Controls.Add(this.FirstName);
             this.Controls.Add(this.user_id);
             this.Controls.Add(this.UserID);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.NumberPlate);
             this.Controls.Add(this.dateTime);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Delete);
@@ -372,10 +372,10 @@
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Button Search;
         private System.Windows.Forms.DateTimePicker dateTime;
-        private System.Windows.Forms.ComboBox NumberPlate;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox user_id;
         private System.Windows.Forms.Label UserID;
         private System.Windows.Forms.TextBox FirstName;
+        private System.Windows.Forms.TextBox NumberPlate;
     }
 }

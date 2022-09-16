@@ -117,14 +117,22 @@ namespace Tur_and_Retur_Kørselslogbog
             dataGridView1.DataSource = dt;
         }
 
+        
         private void Update_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
             con.Open();
-            SqlCommand command = new SqlCommand("update UserData1 set FirstName = '"+FirstName.Text+"', LastName = '"+LastName.Text+"', Email = '"+Email.Text+"', Telephone = '"+Telephone.Text+"', NumberPlate = '"+NumberPlate.Text+"'", con);
-            command.ExecuteNonQuery();
-            con.Close();
-            
+
+            string Update = "update UserData1 set FirstName = '" + FirstName.Text + "',LastName = '" + LastName.Text + "',Email = '" + Email.Text + "',Telephone = '" + Telephone.Text + "',Date =  '" + dateTime.Text + "',NumberPlate = '" + NumberPlate.Text + "' where User_Id = '" + user_id.Text + "' ";
+            SqlCommand command = new SqlCommand(Update,con);
+                
+                command.ExecuteNonQuery();
+                con.Close();
+
+
+
+
+
 
             FirstName.Text = "";
             LastName.Text = "";
@@ -135,6 +143,7 @@ namespace Tur_and_Retur_Kørselslogbog
 
             MessageBox.Show("You Have Successfully Updated User", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             BindData();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -158,7 +167,7 @@ namespace Tur_and_Retur_Kørselslogbog
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from UserData1 where User_Id = '"+user_id.SelectedItem.ToString()+"'";
+            cmd.CommandText = "select * from UserData1 where User_Id = '" + user_id.SelectedItem.ToString() + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -212,6 +221,34 @@ namespace Tur_and_Retur_Kørselslogbog
             //}
 
 
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+            con.Open();
+
+            string Delete = "delete from UserData1 where User_Id = '" + user_id.Text + "' ";
+            SqlCommand command = new SqlCommand(Delete, con);
+
+            command.ExecuteNonQuery();
+            con.Close();
+
+
+
+
+
+
+            FirstName.Text = "";
+            LastName.Text = "";
+            Email.Text = "";
+            Telephone.Text = "";
+            NumberPlate.Text = "";
+
+
+            MessageBox.Show("You Have Successfully Deleted User", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BindData();
+            cc();
         }
     }
 }
