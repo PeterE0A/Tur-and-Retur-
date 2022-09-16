@@ -44,7 +44,8 @@ namespace Tur_and_Retur_Kørselslogbog
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            new Kørsels().Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)

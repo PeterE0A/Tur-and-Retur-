@@ -62,6 +62,7 @@
             this.laber1.Size = new System.Drawing.Size(267, 47);
             this.laber1.TabIndex = 0;
             this.laber1.Text = "Personale Data";
+            this.laber1.Click += new System.EventHandler(this.laber1_Click);
             // 
             // name
             // 
@@ -73,6 +74,7 @@
             this.name.Size = new System.Drawing.Size(75, 17);
             this.name.TabIndex = 1;
             this.name.Text = "First Name";
+            this.name.Click += new System.EventHandler(this.name_Click);
             // 
             // LastName
             // 
@@ -96,6 +98,7 @@
             this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Last Name";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Email
             // 
@@ -107,6 +110,7 @@
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(216, 28);
             this.Email.TabIndex = 6;
+            this.Email.TextChanged += new System.EventHandler(this.Email_TextChanged);
             // 
             // label3
             // 
@@ -118,6 +122,7 @@
             this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Email";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Telephone
             // 
@@ -129,6 +134,7 @@
             this.Telephone.Name = "Telephone";
             this.Telephone.Size = new System.Drawing.Size(216, 28);
             this.Telephone.TabIndex = 8;
+            this.Telephone.TextChanged += new System.EventHandler(this.Telephone_TextChanged);
             // 
             // label4
             // 
@@ -140,6 +146,7 @@
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Telephone";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -151,6 +158,7 @@
             this.label5.Size = new System.Drawing.Size(37, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Date";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -162,6 +170,7 @@
             this.label6.Size = new System.Drawing.Size(93, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "Number Plate";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Back
             // 
@@ -256,6 +265,7 @@
             this.dateTime.Name = "dateTime";
             this.dateTime.Size = new System.Drawing.Size(216, 28);
             this.dateTime.TabIndex = 17;
+            this.dateTime.ValueChanged += new System.EventHandler(this.dateTime_ValueChanged);
             // 
             // dataGridView1
             // 
@@ -266,6 +276,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(631, 400);
             this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // user_id
             // 
@@ -292,6 +303,7 @@
             this.UserID.Size = new System.Drawing.Size(53, 17);
             this.UserID.TabIndex = 20;
             this.UserID.Text = "User ID";
+            this.UserID.Click += new System.EventHandler(this.UserID_Click);
             // 
             // FirstName
             // 
@@ -315,6 +327,7 @@
             this.NumberPlate.Name = "NumberPlate";
             this.NumberPlate.Size = new System.Drawing.Size(216, 28);
             this.NumberPlate.TabIndex = 23;
+            this.NumberPlate.TextChanged += new System.EventHandler(this.NumberPlate_TextChanged);
             // 
             // personale
             // 

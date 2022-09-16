@@ -60,9 +60,14 @@ namespace Tur_and_Retur_Kørselslogbog
 
         private void button5_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+            SqlCommand command = new SqlCommand("select * from UserData1 where User_Id = '" + user_id.Text + "'", con);
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
 
-            
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -249,6 +254,71 @@ namespace Tur_and_Retur_Kørselslogbog
             MessageBox.Show("You Have Successfully Deleted User", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             BindData();
             cc();
+        }
+
+        private void UserID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dateTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NumberPlate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Telephone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void laber1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
