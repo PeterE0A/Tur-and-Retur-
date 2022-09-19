@@ -33,7 +33,7 @@ namespace Tur_and_Retur_Kørselslogbog
         void BindData()
         {
             SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
-            SqlCommand command = new SqlCommand("select * from UserData1 inner join KørselsData on UserData1.User_Id = KørselsData.User_Id", con);
+            SqlCommand command = new SqlCommand("select * from UserData1", con);
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
@@ -51,7 +51,7 @@ namespace Tur_and_Retur_Kørselslogbog
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from KørselsData";
+            cmd.CommandText = "select * from UserData1 inner join kørselslogData on UserData1.NumberPlate = kørselslogData.NumberPlate";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -102,6 +102,37 @@ namespace Tur_and_Retur_Kørselslogbog
         private void Kørsels_Load(object sender, EventArgs e)
         {
             cc();
+        }
+
+        private void Add1_Click(object sender, EventArgs e)
+        {
+            if (opgave1.Text == "")
+            {
+                MessageBox.Show("Fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+                con.Open();
+                string insert = "update kørselslogData set NumberPlate = '" + opgave1 + "' where User_Id = '" + user_id.Text + "' ";
+                SqlCommand cmd = new SqlCommand(insert, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+
+                opgave1.Text = "";
+               
+
+
+                MessageBox.Show("You Have Successfully Added am Opgave", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //BindData();
+                cc();
+
+            }
+
+
         }
     }
 }

@@ -87,9 +87,9 @@ namespace Tur_and_Retur_Kørselslogbog
             {
                 SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
                 con.Open();
-                string ADD = "INSERT INTO UserData1 (FirstName, LastName, Email, Telephone, Date, NumberPlate) VALUES ('" + FirstName.Text + "', '" + LastName.Text + "', '" + Email.Text + "', '" + Telephone.Text + "',  '" + this.dateTime.Text + "', '" + NumberPlate.Text + "')";
+                string ADD ="INSERT INTO UserData1 (FirstName, LastName, Email, Telephone, Date, NumberPlate) VALUES ('" + FirstName.Text + "', '" + LastName.Text + "', '" + Email.Text + "', '" + Telephone.Text + "',  '" + this.dateTime.Text + "', '" + NumberPlate.Text + "') ";
                 SqlCommand cmd = new SqlCommand(ADD, con);
-                cmd.ExecuteNonQuery();
+               cmd.ExecuteNonQuery();
                 con.Close();
                
 

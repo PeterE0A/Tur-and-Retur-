@@ -148,6 +148,7 @@
             this.Add1.TabIndex = 35;
             this.Add1.Text = "Add";
             this.Add1.UseVisualStyleBackColor = false;
+            this.Add1.Click += new System.EventHandler(this.Add1_Click);
             // 
             // Back
             // 
