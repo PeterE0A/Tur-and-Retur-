@@ -96,5 +96,10 @@ namespace Tur_and_Retur_Kørselslogbog
             new frmLogin().Show();
             this.Hide();
         }
+
+        private void frmRegister_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -235,8 +235,11 @@ namespace Tur_and_Retur_Kørselslogbog
 
             string Delete = "delete from UserData1 where User_Id = '" + user_id.Text + "' ";
             SqlCommand command = new SqlCommand(Delete, con);
+            string Delete1 = "delete from kørselslogData where NumberPlate = '" + NumberPlate.Text + "' ";
+            SqlCommand command1 = new SqlCommand(Delete1, con);
 
             command.ExecuteNonQuery();
+            command1.ExecuteNonQuery();
             con.Close();
 
 
