@@ -12,6 +12,8 @@ namespace Tur_and_Retur_Kørselslogbog
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+
+        // REMEMBER TO CHANGE CONNECTION WHEN TESTING IT IN A NEW COMPUTER
         static void Main()
         {
             Application.EnableVisualStyles();
