@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.opgave1 = new System.Windows.Forms.TextBox();
+            this.NumberPlate = new System.Windows.Forms.TextBox();
             this.user_id = new System.Windows.Forms.ComboBox();
             this.UserID = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -37,21 +37,24 @@
             this.Update = new System.Windows.Forms.Button();
             this.Add1 = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
-            this.opgave = new System.Windows.Forms.Label();
+            this.Plate = new System.Windows.Forms.Label();
             this.KørselsLog = new System.Windows.Forms.Label();
+            this.Opgavetxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // opgave1
+            // NumberPlate
             // 
-            this.opgave1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.opgave1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.opgave1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opgave1.Location = new System.Drawing.Point(30, 180);
-            this.opgave1.Multiline = true;
-            this.opgave1.Name = "opgave1";
-            this.opgave1.Size = new System.Drawing.Size(216, 28);
-            this.opgave1.TabIndex = 43;
+            this.NumberPlate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.NumberPlate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NumberPlate.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberPlate.Location = new System.Drawing.Point(30, 180);
+            this.NumberPlate.Multiline = true;
+            this.NumberPlate.Name = "NumberPlate";
+            this.NumberPlate.Size = new System.Drawing.Size(216, 28);
+            this.NumberPlate.TabIndex = 43;
+            this.NumberPlate.TextChanged += new System.EventHandler(this.opgave1_TextChanged);
             // 
             // user_id
             // 
@@ -103,6 +106,7 @@
             this.Search.TabIndex = 38;
             this.Search.Text = "Search";
             this.Search.UseVisualStyleBackColor = false;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // Delete
             // 
@@ -118,6 +122,7 @@
             this.Delete.TabIndex = 37;
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = false;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Update
             // 
@@ -133,6 +138,7 @@
             this.Update.TabIndex = 36;
             this.Update.Text = "Update";
             this.Update.UseVisualStyleBackColor = false;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
             // Add1
             // 
@@ -166,16 +172,17 @@
             this.Back.UseVisualStyleBackColor = false;
             this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
-            // opgave
+            // Plate
             // 
-            this.opgave.AutoSize = true;
-            this.opgave.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opgave.ForeColor = System.Drawing.Color.DarkGray;
-            this.opgave.Location = new System.Drawing.Point(27, 160);
-            this.opgave.Name = "opgave";
-            this.opgave.Size = new System.Drawing.Size(55, 17);
-            this.opgave.TabIndex = 25;
-            this.opgave.Text = "Opgave";
+            this.Plate.AutoSize = true;
+            this.Plate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Plate.ForeColor = System.Drawing.Color.DarkGray;
+            this.Plate.Location = new System.Drawing.Point(27, 160);
+            this.Plate.Name = "Plate";
+            this.Plate.Size = new System.Drawing.Size(89, 17);
+            this.Plate.TabIndex = 25;
+            this.Plate.Text = "NumberPlate";
+            this.Plate.Click += new System.EventHandler(this.opgave_Click);
             // 
             // KørselsLog
             // 
@@ -188,13 +195,37 @@
             this.KørselsLog.TabIndex = 24;
             this.KørselsLog.Text = "Kørsels Log Registrering";
             // 
+            // Opgavetxt
+            // 
+            this.Opgavetxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.Opgavetxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Opgavetxt.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Opgavetxt.Location = new System.Drawing.Point(30, 239);
+            this.Opgavetxt.Multiline = true;
+            this.Opgavetxt.Name = "Opgavetxt";
+            this.Opgavetxt.Size = new System.Drawing.Size(216, 28);
+            this.Opgavetxt.TabIndex = 45;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(27, 219);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Opgave";
+            // 
             // Kørsels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 658);
-            this.Controls.Add(this.opgave1);
+            this.Controls.Add(this.Opgavetxt);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.NumberPlate);
             this.Controls.Add(this.user_id);
             this.Controls.Add(this.UserID);
             this.Controls.Add(this.dataGridView1);
@@ -203,7 +234,7 @@
             this.Controls.Add(this.Update);
             this.Controls.Add(this.Add1);
             this.Controls.Add(this.Back);
-            this.Controls.Add(this.opgave);
+            this.Controls.Add(this.Plate);
             this.Controls.Add(this.KørselsLog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Kørsels";
@@ -217,7 +248,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox opgave1;
+        private System.Windows.Forms.TextBox NumberPlate;
         private System.Windows.Forms.ComboBox user_id;
         private System.Windows.Forms.Label UserID;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -226,7 +257,9 @@
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button Add1;
         private System.Windows.Forms.Button Back;
-        private System.Windows.Forms.Label opgave;
+        private System.Windows.Forms.Label Plate;
         private System.Windows.Forms.Label KørselsLog;
+        private System.Windows.Forms.TextBox Opgavetxt;
+        private System.Windows.Forms.Label label1;
     }
 }

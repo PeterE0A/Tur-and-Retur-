@@ -33,7 +33,7 @@ namespace Tur_and_Retur_Kørselslogbog
         void BindData()
         {
             SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
-            SqlCommand command = new SqlCommand("select * from UserData1", con);
+            SqlCommand command = new SqlCommand("select * from UserData1 full join kørselslogData on UserData1.NumberPlate = kørselslogData.NumberPlate", con);
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
@@ -51,7 +51,7 @@ namespace Tur_and_Retur_Kørselslogbog
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from UserData1 inner join kørselslogData on UserData1.NumberPlate = kørselslogData.NumberPlate";
+            cmd.CommandText = "select * from UserData1 full join kørselslogData on UserData1.NumberPlate = kørselslogData.NumberPlate";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -78,7 +78,7 @@ namespace Tur_and_Retur_Kørselslogbog
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from UserData1 where User_Id = '" + user_id.SelectedItem.ToString() + "'";
+            cmd.CommandText = "select * from UserData1 full join kørselslogData on UserData1.NumberPlate = kørselslogData.NumberPlate where User_Id = '" + user_id.SelectedItem.ToString() + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -86,9 +86,9 @@ namespace Tur_and_Retur_Kørselslogbog
 
             foreach (DataRow dr in dt.Rows)
             {
-               user_id.Text = dr["User_Id"].ToString();
-              
-
+                user_id.Text = dr["User_Id"].ToString();
+                NumberPlate.Text = dr["NumberPlate"].ToString();
+                Opgavetxt.Text = dr["Opgave"].ToString();
 
 
             }
@@ -106,7 +106,7 @@ namespace Tur_and_Retur_Kørselslogbog
 
         private void Add1_Click(object sender, EventArgs e)
         {
-            if (opgave1.Text == "")
+            if (NumberPlate.Text == "")
             {
                 MessageBox.Show("Fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -115,24 +115,97 @@ namespace Tur_and_Retur_Kørselslogbog
             {
                 SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
                 con.Open();
-                string insert = "update kørselslogData set NumberPlate = '" + opgave1 + "' where User_Id = '" + user_id.Text + "' ";
+                string insert = "insert into kørselslogData (NumberPlate, Opgave) VALUES ('" + NumberPlate.Text + "','" + Opgavetxt.Text + "') "; 
                 SqlCommand cmd = new SqlCommand(insert, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
 
 
-                opgave1.Text = "";
-               
+                NumberPlate.Text = "";
+                Opgavetxt.Text = "";
 
 
-                MessageBox.Show("You Have Successfully Added am Opgave", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //BindData();
+                MessageBox.Show("You Have Successfully Added an Opgave", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                BindData();
                 cc();
 
             }
 
 
+        }
+
+        private void opgave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void opgave1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+            con.Open();
+
+            string Update = "update kørselslogData set Opgave = '" + Opgavetxt.Text + "' where NumberPlate = '" + NumberPlate.Text + "' ";
+            SqlCommand command = new SqlCommand(Update, con);
+
+            command.ExecuteNonQuery();
+            con.Close();
+
+
+
+
+
+
+            
+            NumberPlate.Text = "";
+            Opgavetxt.Text = "";
+
+
+            MessageBox.Show("You Have Successfully Updated Opgave", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BindData();
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+            con.Open();
+
+            string Delete = "delete from kørselslogData where NumberPlate = '" + NumberPlate.Text + "' ";
+            SqlCommand command = new SqlCommand(Delete, con);
+
+            command.ExecuteNonQuery();
+            con.Close();
+
+
+
+
+
+
+            
+            NumberPlate.Text = "";
+            Opgavetxt.Text = "";
+
+
+            MessageBox.Show("You Have Successfully Deleted Opgave", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BindData();
+            cc();
+        }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=WIN-C5D49FN17LD;Initial Catalog=Registeration;Integrated Security=True");
+            SqlCommand command = new SqlCommand("select * from UserData1 full join kørselslogData on UserData1.NumberPlate = kørselslogData.NumberPlate where User_Id = '" + user_id.SelectedItem.ToString() + "'", con);
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
     }
 }
